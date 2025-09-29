@@ -128,8 +128,8 @@ fun DrawerContent(
         listOf(
             DrawerItem.Search,
             DrawerItem.Home,
-            DrawerItem.UGC,
-            DrawerItem.PGC,
+            // DrawerItem.UGC,
+            // DrawerItem.PGC,
         ).forEach { item ->
             IconButton(
                 modifier = Modifier
