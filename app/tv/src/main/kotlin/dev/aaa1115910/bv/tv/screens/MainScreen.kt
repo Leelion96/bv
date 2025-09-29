@@ -72,9 +72,9 @@ fun MainScreen(
                     mainFocusRequester.requestFocus()
                 }
             }
-            DrawerItem.UGC -> ugcFocusRequester.requestFocus()
-            DrawerItem.PGC -> pgcFocusRequester.requestFocus()
-            DrawerItem.Search -> searchFocusRequester.requestFocus()
+            //DrawerItem.UGC -> ugcFocusRequester.requestFocus()
+            //DrawerItem.PGC -> pgcFocusRequester.requestFocus()
+            //DrawerItem.Search -> searchFocusRequester.requestFocus()
             DrawerItem.Settings -> settingFocusRequester.requestFocus()
             else -> {}
         }
@@ -149,9 +149,9 @@ fun MainScreen(
                             contentFocusRequester = mainFocusRequester,
                             navFocusRequester = mainNavFocusRequester
                         )
-                        DrawerItem.UGC -> UgcContent(contentFocusRequester = ugcFocusRequester)
-                        DrawerItem.PGC -> PgcContent(contentFocusRequester = pgcFocusRequester)
-                        DrawerItem.Search -> SearchInputScreen(defaultFocusRequester = searchFocusRequester)
+                        //DrawerItem.UGC -> UgcContent(contentFocusRequester = ugcFocusRequester)
+                        //DrawerItem.PGC -> PgcContent(contentFocusRequester = pgcFocusRequester)
+                        //DrawerItem.Search -> SearchInputScreen(defaultFocusRequester = searchFocusRequester)
                         DrawerItem.Settings -> SettingsScreen(defaultFocusRequester = settingFocusRequester)
                         else -> {}
                     }

@@ -198,19 +198,9 @@ fun HomeContent(
                 },
                 onClick = { nav ->
                     when (nav) {
-                        HomeTopNavItem.Recommend -> {
-                            logger.fInfo { "clear recommend data" }
-                            recommendViewModel.clearData()
-                            logger.fInfo { "reload recommend data" }
-                            scope.launch(Dispatchers.IO) { recommendViewModel.loadMore() }
-                        }
+                        HomeTopNavItem.Recommend -> {}
 
-                        HomeTopNavItem.Popular -> {
-                            logger.fInfo { "clear popular data" }
-                            popularViewModel.clearData()
-                            logger.fInfo { "reload popular data" }
-                            scope.launch(Dispatchers.IO) { popularViewModel.loadMore() }
-                        }
+                        HomeTopNavItem.Popular -> {}
 
                         HomeTopNavItem.Dynamics -> {
                             logger.fInfo { "clear dynamic data" }
@@ -252,8 +242,8 @@ fun HomeContent(
                 }
             ) { screen ->
                 when (screen) {
-                    HomeTopNavItem.Recommend -> RecommendScreen(lazyListState = recommendState)
-                    HomeTopNavItem.Popular -> PopularScreen(lazyListState = popularState)
+                    //HomeTopNavItem.Recommend -> RecommendScreen(lazyListState = recommendState)
+                    //HomeTopNavItem.Popular -> PopularScreen(lazyListState = popularState)
                     HomeTopNavItem.Dynamics -> DynamicsScreen(lazyListState = dynamicState)
                     HomeTopNavItem.User -> UserScreen(
                         contentFocusRequester = contentFocusRequester,
