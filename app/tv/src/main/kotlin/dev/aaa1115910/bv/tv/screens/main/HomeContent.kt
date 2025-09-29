@@ -55,7 +55,7 @@ fun HomeContent(
     val initialSelectedTab = if (Prefs.isLogin) {
         HomeTopNavItem.Dynamics
     } else {
-        HomeTopNavItem.Recommend
+        HomeTopNavItem.Dynamics
     }
 
     // 从全局状态获取上次选择的标签位置，如果没有则默认为Dynamics
@@ -78,8 +78,8 @@ fun HomeContent(
         derivedStateOf {
             with(
                 when (selectedTab) {
-                    HomeTopNavItem.Recommend -> recommendState
-                    HomeTopNavItem.Popular -> popularState
+                    // HomeTopNavItem.Recommend -> recommendState
+                    // HomeTopNavItem.Popular -> popularState
                     HomeTopNavItem.Dynamics -> dynamicState
                     HomeTopNavItem.User -> userState
                 }
@@ -92,10 +92,10 @@ fun HomeContent(
     //启动时刷新数据
     LaunchedEffect(Unit) {
         scope.launch(Dispatchers.IO) {
-            recommendViewModel.loadMore()
+            // recommendViewModel.loadMore()
         }
         scope.launch(Dispatchers.IO) {
-            popularViewModel.loadMore()
+            // popularViewModel.loadMore()
         }
         scope.launch(Dispatchers.IO) {
             dynamicViewModel.loadMoreVideo()
@@ -125,8 +125,8 @@ fun HomeContent(
         // scroll to top
         scope.launch(Dispatchers.Main) {
             when (selectedTab) {
-                HomeTopNavItem.Recommend -> recommendState.animateScrollToItem(0)
-                HomeTopNavItem.Popular -> popularState.animateScrollToItem(0)
+                // HomeTopNavItem.Recommend -> recommendState.animateScrollToItem(0)
+                // HomeTopNavItem.Popular -> popularState.animateScrollToItem(0)
                 HomeTopNavItem.Dynamics -> dynamicState.animateScrollToItem(0)
                 HomeTopNavItem.User -> {} // 用户页面不需要滚动到顶部
             }
@@ -165,9 +165,9 @@ fun HomeContent(
         } else {
             // 使用默认顺序
             if (Prefs.isLogin) {
-                listOf(HomeTopNavItem.Dynamics, HomeTopNavItem.Recommend, HomeTopNavItem.Popular, HomeTopNavItem.User)
+                listOf(HomeTopNavItem.Dynamics,  HomeTopNavItem.User)
             } else {
-                listOf(HomeTopNavItem.Recommend, HomeTopNavItem.Popular, HomeTopNavItem.Dynamics, HomeTopNavItem.User)
+                listOf( HomeTopNavItem.Dynamics, HomeTopNavItem.User)
             }
         }
     }
@@ -186,8 +186,8 @@ fun HomeContent(
                 onSelectedChanged = { nav ->
                     selectedTab = nav as HomeTopNavItem
                     when (nav) {
-                        HomeTopNavItem.Recommend -> {}
-                        HomeTopNavItem.Popular -> {}
+                        // HomeTopNavItem.Recommend -> {}
+                        // HomeTopNavItem.Popular -> {}
                         HomeTopNavItem.Dynamics -> {
                             if (!dynamicViewModel.loadingVideo && dynamicViewModel.isLogin && dynamicViewModel.dynamicVideoList.isEmpty()) {
                                 scope.launch(Dispatchers.IO) { dynamicViewModel.loadMoreVideo() }
@@ -198,9 +198,9 @@ fun HomeContent(
                 },
                 onClick = { nav ->
                     when (nav) {
-                        HomeTopNavItem.Recommend -> {}
+                        // HomeTopNavItem.Recommend -> {}
 
-                        HomeTopNavItem.Popular -> {}
+                        // HomeTopNavItem.Popular -> {}
 
                         HomeTopNavItem.Dynamics -> {
                             logger.fInfo { "clear dynamic data" }
